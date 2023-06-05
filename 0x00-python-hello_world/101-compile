@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-import os
-
-
-pyfile = os.getenv('PYFILE')
-os.system(f"python3 -m compileall -b {pyfile}")
-
+#!/bin/bash
+echo "Compiling $PYFILE ..."
+python3 -m compileall -b "$PYFILE"
