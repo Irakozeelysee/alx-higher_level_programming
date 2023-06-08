@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 if __name__ == "__main__":
-    
+
     import importlib.util
 
     file_path = "./variable_load_5.py"
