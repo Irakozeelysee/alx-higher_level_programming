@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-import importlib.util
-
 if __name__ == "__main__":
+    
+    import importlib.util
 
     file_path = "./variable_load_5.py"
 
@@ -12,4 +12,7 @@ if __name__ == "__main__":
 
     module = importlib.util.module_from_spec(module_spec)
     module_spec.loader.exec_module(module)
+
     print(module.a)
+else:
+    pass
