@@ -1,33 +1,29 @@
 #!/usr/bin/python3
 
 if __name__ == "__main__":
-
-    import sys
+    from sys import argv
     from calculator_1 import add, sub, mul, div
 
-    if len(sys.argv) != 4:
+    argc = len(argv) - 1
+    if argc != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        sys.exit(1)
+        exit(1)
 
-        a = int(sys.argv[1])
-        operator = sys.argv[2]
-        b = int(sys.argv[3])
+    num1 = int(argv[1])
+    num2 = int(argv[3])
+    operator = argv[2]
 
-        result = None
+    if operator == "+":
+        print("{} + {} = {}".format(num1,num2,add(num1,num2)))
+    elif operator == "-":
+        print("{} - {} = {}".format(num1,num2,sub(num1,num2)))
+    elif operator == "*":
+        print("{} * {} = {}".format(num1,num2,mul(num1,num2)))
+    elif operator == "/":
+        print("{} / {} = {}".format(num1,num2,div(num1,num2)))
+    else:
+        print("Unknown operator. Available operators: +, -, * and /")
+        exit(1)
 
-        if operator == "+":
-            result = add(a, b)
-        elif operator == "-":
-            result = sub(a, b)
-        elif operator == "*":
-            result = mul(a, b)
-        elif operator == "/":
-            result = div(a, b)
-        else:
-            print("Unknown operator. Available operators: +, -, * and /")
-            sys.exit(1)
-
-            print(f"{a} {operator} {b} = {result}")
-            sys.exit(0)
 else:
     pass
