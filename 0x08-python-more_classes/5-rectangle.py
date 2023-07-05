@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-a class Rectangle that defines a rectangle by: (based on 2-rectangle.py)
+a class Rectangle that defines a rectangle by: (based on 4-rectangle.py)
 """
 
 
@@ -107,14 +107,21 @@ class Rectangle:
         Returns:
             str: The string representation of the rectangle.
         """
-        rect = ""
         if self.__width == 0 or self.__height == 0:
-            return rect
+            return ""
         return '\n'.join(['#' * self.__width] * self.__height)
 
-        for i in range(0, self.height):
-            for j in range(0, self.width):
-                rect += "#"
-            if i < self.height - 1:
-                rect += "\n"
-        return rect
+    def __repr__(self):
+        """
+        Returns a string representation of the rectangle.
+
+        Returns:
+            str: The string representation of the rectangle.
+        """
+        return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        """
+        Prints a farewell message when the Rectangle instance is deleted.
+        """
+        print("Bye rectangle...")

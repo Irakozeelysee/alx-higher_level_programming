@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-a class Rectangle that defines a rectangle by: (based on 2-rectangle.py)
+a class Rectangle that defines a rectangle by: (based on 7-rectangle.py)
 """
 
 
@@ -13,6 +13,9 @@ class Rectangle:
         height (int): The height of the rectangle.
     """
 
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """
         Initializes a new instance of the Rectangle class.
@@ -23,6 +26,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -107,14 +111,50 @@ class Rectangle:
         Returns:
             str: The string representation of the rectangle.
         """
-        rect = ""
         if self.__width == 0 or self.__height == 0:
-            return rect
-        return '\n'.join(['#' * self.__width] * self.__height)
+            return ""
+        symbol = str(Rectangle.print_symbol)
+        return '\n'.join([symbol * self.__width] * self.__height)
 
-        for i in range(0, self.height):
-            for j in range(0, self.width):
-                rect += "#"
-            if i < self.height - 1:
-                rect += "\n"
-        return rect
+    def __repr__(self):
+        """
+        Returns a string representation of the rectangle.
+
+        Returns:
+            str: The string representation of the rectangle.
+        """
+        return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        """
+        Prints a farewell message when the Rectangle instance is deleted
+        and decrements the number of instances.
+        """
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        Determines the rectangle with the larger area.
+
+        Args:
+            rect_1 (Rectangle): The first rectangle.
+            rect_2 (Rectangle): The second rectangle.
+
+        Returns:
+            Rectangle: The rectangle with the larger area.
+
+        Raises:
+            TypeError: If rect_1 is not an instance of Rectangle.
+            TypeError: If rect_2 is not an instance of Rectangle.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
