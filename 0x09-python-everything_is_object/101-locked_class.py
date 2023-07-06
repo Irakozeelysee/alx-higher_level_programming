@@ -1,12 +1,11 @@
 #!/usr/bin/python3
+"""
+a class LockedClass with no class or object attribute
+"""
+
 
 class LockedClass:
     """
-    Class that prevents the creation of
-    new instance attributes, except 'first_name'.
+    prevent user from creating new instance attributes
     """
-    def __setattr__(self, name, value):
-        if not hasattr(self, name) and name != 'first_name':
-            raise AttributeError("'LockedClass' object"
-                                 "has no attribute '{}'".format(name))
-        super().__setattr__(name, value)
+    __slots__ = ['first_name']
