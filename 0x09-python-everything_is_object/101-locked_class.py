@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class LockedClass:
     """
     Class that prevents the creationof new
