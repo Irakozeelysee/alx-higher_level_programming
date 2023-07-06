@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+"""This module multiplies 2 matrices
+"""
+
+
 def matrix_mul(m_a, m_b):
     """Multiplies two matrices."""
     if not isinstance(m_a, list) or not isinstance(m_b, list):
