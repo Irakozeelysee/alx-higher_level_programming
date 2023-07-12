@@ -1,0 +1,71 @@
+BaseGeometry class tests
+-------------------------
+
+check module's doc:
+      >>> doc = __import__("7-base_geometry").__doc__
+      >>> print(len(doc) > 1)
+      True
+
+check method's doc:
+      >>> doc =	__import__("7-base_geometry").BaseGeometry.__doc__
+      >>> print(len(doc) > 1)
+      True
+
+check area's doc:
+      >>> doc = __import__("7-base_geometry").BaseGeometry.area.__doc__
+      >>> print(len(doc) > 1)
+      True
+
+check integer_validator's doc:
+      >>> doc = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+      >>> print(len(doc) > 1)
+      True
+
+      >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+      >>> bg = BaseGeometry()
+
+case 1 (bg.area()):
+     >>> bg.area()
+     Traceback (most recent call last):
+     ...
+     Exception: area() is not implemented
+
+case 2 (area() too many args):
+     >>> bg.area(13)
+     Traceback (most recent call last):
+     ...
+     TypeError: area() takes 1 positional argument but 2 were given
+
+case 3 (bg.integer_validator("integer", 13)):
+     >>> bg.integer_validator("integer", 13)
+
+
+case 4 (bg.integer_validator("integer", -13)):
+      >>> bg.integer_validator("integer", -13)
+      Traceback (most recent call last):
+      ...
+      ValueError: integer must be greater than 0
+
+case 5 (integer_validator 3 args)
+     >>> bg.integer_validator("integer", 13.13)
+     Traceback (most recent call last):
+     ...
+     TypeError: integer must be an integer
+
+case 6 (integer_validator 0 args):
+     >>> bg.integer_validator()
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+case 7 (integer_validator 1 arg):
+     >>> bg.integer_validator("integer")
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+case 8 (bool type):
+	 >>> bg.integer_validator("bool", False)
+	 Traceback (most recent call last):
+         ...
+         TypeError: bool must be an integer
