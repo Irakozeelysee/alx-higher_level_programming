@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""This Module lists all available
+attributes and methods of an object
+"""
+
 
 def lookup(obj):
     """
