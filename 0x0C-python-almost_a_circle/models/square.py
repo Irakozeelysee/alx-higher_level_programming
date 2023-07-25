@@ -29,6 +29,21 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """Getter for size attribute."""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Setter for size attribute.
+        Args:
+        value (int): Value to set the size attribute (both width and height).
+        """
+        self.width = value
+        self.height = value
+
     def update(self, *args, **kwargs):
         """Assigns attributes based on *args and **kwargs."""
         if args:
