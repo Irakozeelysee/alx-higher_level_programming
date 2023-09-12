@@ -1,9 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
-const args = process.argv.slice(2);
+const argv = process.argv;
 
-if (args.length === 2) {
-	console.log(`${args[0]} is ${args[1]}`);
+if (argv[2]) {
+  if (argv[3]) {
+    console.log(`${argv[2]} is ${argv[3]}`);
+  } else {
+    console.log(`${argv[2]} is undefined`);
+  }
 } else {
-	console.log('undefined is undefined');
+  console.log('undefined is undefined');
 }

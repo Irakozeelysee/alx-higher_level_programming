@@ -1,18 +1,17 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
-function factorial(n) {
-	if (isNaN(n)) {
-		return 1;
-	}
-	n = parseInt(n);
-	if (n === 0 || n === 1) {
-		return 1;
-	} else if (n < 0) {
-		return Infinity;
-	} else {
-		return n * factorial(n - 1);
-	}
+const argv = process.argv;
+
+function facto (num) {
+  if (num === 0) {
+    return (1);
+  }
+  return num * facto(num - 1);
 }
-const arg = process.argv[2];
 
-console.log(factorial(arg));
+if (argv[2] && Number(argv[2])) {
+  const num = parseInt(argv[2]);
+  console.log(facto(num));
+} else {
+  console.log(facto(0));
+}

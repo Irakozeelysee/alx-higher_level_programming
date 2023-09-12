@@ -1,14 +1,10 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
-function add(a, b) {
-	  return parseInt(a) + parseInt(b);
-}
+const argv = process.argv;
 
-const arg1 = process.argv[2];
-const arg2 = process.argv[3];
-
-if (!isNaN(arg1) && !isNaN(arg2)) {
-	  console.log(add(arg1, arg2));
+if ((argv[2] && Number(argv[2])) && (argv[3] && Number(argv[3]))) {
+  const res = parseInt(argv[2]) + parseInt(argv[3]);
+  console.log(`${res}`);
 } else {
-	  console.log('NaN');
+  console.log('NaN');
 }
