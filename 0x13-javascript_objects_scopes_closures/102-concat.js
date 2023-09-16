@@ -1,4 +1,5 @@
 #!/usr/bin/node
+
 const argv = process.argv;
 const fs = require('fs');
 
