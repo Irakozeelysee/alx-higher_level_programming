@@ -8,7 +8,7 @@ module.exports = class Rectangle {
     }
   }
 
-  print() {
+  print () {
     let row = '';
     for (let i = 0; i < this.width; i++) {
       row += 'X';
