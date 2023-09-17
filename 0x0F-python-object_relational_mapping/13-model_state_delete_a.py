@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Prints the State object ID with the given name from the database.
+"""Deletes State objects with a name containing 'a' from the database.
 """
 
 from sys import argv
@@ -14,12 +14,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == argv[4]).all()
+    states = session.query(State).filter(State.name.contains('a')).all()
+    for state in states:
+        session.delete(state)
 
-    if states == []:
-        print("Not found")
-    else:
-        for state in states:
-            print("{}".format(state.id))
-
+    session.commit()
     session.close()

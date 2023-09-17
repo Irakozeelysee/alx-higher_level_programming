@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Prints the State object ID with the given name from the database.
-"""
+"""Prints all City objects from the database hbtn_0e_14_usa."""
 
 from sys import argv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
+from model_city import Base, City
+from model_state import State
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
@@ -14,12 +14,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == argv[4]).all()
+    cities = session.query(City).order_by(City.id).all()
 
-    if states == []:
-        print("Not found")
-    else:
-        for state in states:
-            print("{}".format(state.id))
+    for city in cities:
+        state = session.query(State).filter_by(id=city.state_id).first()
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     session.close()

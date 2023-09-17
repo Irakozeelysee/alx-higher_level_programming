@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Prints the State object ID with the given name from the database.
+"""Adds the State object 'Louisiana' to the database.
 """
 
 from sys import argv
@@ -14,12 +14,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == argv[4]).all()
-
-    if states == []:
-        print("Not found")
-    else:
-        for state in states:
-            print("{}".format(state.id))
-
+    state = State(name='Louisiana')
+    session.add(state)
+    session.commit()
+    print(state.id)
     session.close()
