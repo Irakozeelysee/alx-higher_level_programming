@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Module to define the State class.
+"""
+Module to define the State class.
 """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
@@ -8,7 +9,7 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()
 
 
-class State(Base):
+class City(Base):
     """Class representing a state in the database.
     Attributes:
     id (int): An auto-generated,
